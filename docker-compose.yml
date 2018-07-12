@@ -1,0 +1,40 @@
+version: '3'
+services:
+  puppetserver:
+    image: puppet/puppetserver-standalone
+    hostname: puppet.docker
+    volumes:
+      - ./ssl:/etc/puppetlabs/puppet/ssl
+  vault:
+    image: vault
+    hostname: vault.docker
+    volumes:
+      - ./ssl/certs/ca.pem:/vault/config/ca.pem
+      - ./ssl/certs/vault.docker.pem:/vault/config/cert.pem
+      - ./ssl/private_keys/vault.docker.pem:/vault/config/private_key.pem
+    ports:
+      - 8200:8200
+      - 8201:8201
+    depends_on:
+      - puppetserver
+    cap_add:
+      - IPC_LOCK
+    environment:
+      VAULT_LOCAL_CONFIG: >
+        {
+          "backend": {
+            "file": {
+              "path": "/vault/file"
+            }
+          },
+          "default_lease_ttl": "168h",
+          "max_lease_ttl": "720h",
+          "listener": {
+            "tcp": {
+              "address": "0.0.0.0:8200",
+              "tls_cert_file": "/vault/config/cert.pem",
+              "tls_key_file": "/vault/config/private_key.pem"
+            }
+          }
+        }
+    command: ["server"]
