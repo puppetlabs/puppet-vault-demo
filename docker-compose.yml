@@ -1,10 +1,14 @@
 version: '3'
 services:
   puppetserver:
-    image: puppet/puppetserver-standalone
+    build: puppetserver
     hostname: puppet.docker
     volumes:
       - ./ssl:/etc/puppetlabs/puppet/ssl
+      - ./puppet:/puppet
+      - ./hiera:/hiera
+      - ./facter:/facter
+      - ./code:/etc/puppetlabs/code
   vault:
     image: vault
     hostname: vault.docker

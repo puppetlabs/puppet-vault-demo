@@ -1,0 +1,9 @@
+[submodule "puppet"]
+	path = puppet
+	url = https://github.com/puppetlabs/puppet
+[submodule "facter"]
+	path = facter
+	url = https://github.com/puppetlabs/facter
+[submodule "hiera"]
+	path = hiera
+	url = https://github.com/puppetlabs/hiera
