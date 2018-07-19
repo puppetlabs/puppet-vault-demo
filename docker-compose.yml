@@ -3,6 +3,8 @@ services:
   puppetserver:
     build: puppetserver
     hostname: puppet.docker
+    ports:
+      - 8140:8140
     volumes:
       - ./ssl:/etc/puppetlabs/puppet/ssl
       - ./puppet:/puppet
