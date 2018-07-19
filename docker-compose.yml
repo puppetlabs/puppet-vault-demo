@@ -43,4 +43,8 @@ services:
             }
           }
         }
+      VAULT_ADDR: "https://vault.docker:8200"
+      VAULT_CACERT: "/vault/config/ca.pem"
+      VAULT_CLIENT_KEY: "/vault/config/private_key.pem"
+      VAULT_CLIENT_CERT: "vault/config/cert.pem"
     command: ["server"]
