@@ -1,11 +1,6 @@
 $d = Deferred('vault_lookup',["secret/test"])
 
-node medina {
-  $d.call
-  # notify { "$d.call" :}
-}
-
-node toneloc {
+node default {
   notify { example :
     message => $d
   }
