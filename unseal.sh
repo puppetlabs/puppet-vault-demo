@@ -32,7 +32,7 @@ vault policy write secret_reader policy.hcl
 
 echo 'secret_reader policy created'
 
-vault write auth/cert/certs/vault.docker display_name='puppet cert' certificate=@/vault/config/cert.pem policies=secret_reader
+vault write auth/cert/certs/vault.docker display_name='puppet cert' certificate=@/vault/config/ca.pem policies=secret_reader
 
 echo "cert auth enabled for vault.docker with secret_reader policy"
 
