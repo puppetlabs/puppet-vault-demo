@@ -1,7 +1,9 @@
 version: '3'
 services:
   puppetserver:
-    build: puppetserver
+    build:
+      dockerfile: Dockerfile.source
+      context: puppetserver
     hostname: puppet.docker
     ports:
       - 8140:8140
