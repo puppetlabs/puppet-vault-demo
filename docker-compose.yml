@@ -52,9 +52,7 @@ services:
       VAULT_CLIENT_CERT: "vault/config/cert.pem"
     command: ["server"]
   agent:
-    build:
-      dockerfile: ../docker/puppet/Dockerfile
-      context: puppet
+    build: docker/puppet
     hostname: agent.docker
     command: ["tail", "-f", "/dev/null"]
     links:
