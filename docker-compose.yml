@@ -9,6 +9,7 @@ services:
       - 8140:8140
     volumes:
       - ./ssl:/etc/puppetlabs/puppet/ssl
+      - ./puppet.conf:/etc/puppetlabs/puppet/puppet.conf
       - ./puppet:/puppet
       - ./hiera:/hiera
       - ./facter:/facter
@@ -50,3 +51,14 @@ services:
       VAULT_CLIENT_KEY: "/vault/config/private_key.pem"
       VAULT_CLIENT_CERT: "vault/config/cert.pem"
     command: ["server"]
+  agent:
+    build:
+      dockerfile: ../docker/puppet/Dockerfile
+      context: puppet
+    hostname: agent.docker
+    command: ["tail", "-f", "/dev/null"]
+    links:
+      - puppetserver:puppet
+      - vault:vault.docker
+    volumes:
+      - ./ssl:/etc/puppetlabs/puppet/ssl
