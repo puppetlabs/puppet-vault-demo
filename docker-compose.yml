@@ -15,7 +15,7 @@ services:
       - ./facter:/facter
       - ./code:/etc/puppetlabs/code
   vault:
-    image: vault
+    build: docker/vault
     hostname: vault.docker
     volumes:
       - ./ssl/certs/ca.pem:/vault/config/ca.pem
@@ -24,8 +24,6 @@ services:
     ports:
       - 8200:8200
       - 8201:8201
-    depends_on:
-      - puppetserver
     cap_add:
       - IPC_LOCK
     environment:
