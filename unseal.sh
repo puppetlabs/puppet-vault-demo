@@ -34,7 +34,7 @@ echo 'secret_reader policy created'
 
 vault write auth/cert/certs/vault.docker display_name='puppet cert' certificate=@/vault/config/ca.pem policies=secret_reader
 
-echo "cert auth enabled for vault.docker with secret_reader policy"
+echo "cert auth enabled for all certs signed by puppetserver CA with secret_reader policy"
 
 vault write secret/test foo=bar
 
