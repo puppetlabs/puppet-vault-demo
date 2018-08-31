@@ -16,7 +16,7 @@ RUN git clone https://github.com/puppetlabs/puppet --branch vault /usr/src/puppe
 
 WORKDIR /usr/src/puppet
 
-RUN rake package:bootstrap \
+RUN gem install --no-rdoc --no-ri packaging \
  && rake package:gem \
  && gem install --no-rdoc --no-ri pkg/puppet-$(rake package:version | tr - .).gem \
  && gem install --no-rdoc --no-ri vault
