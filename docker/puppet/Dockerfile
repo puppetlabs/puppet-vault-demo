@@ -12,7 +12,7 @@ RUN apk add --no-cache \
       git \
  && gem install --no-rdoc --no-ri rake rspec
 
-RUN git clone https://github.com/puppetlabs/puppet --branch vault /usr/src/puppet
+RUN git clone https://github.com/puppetlabs/puppet --branch master /usr/src/puppet
 
 WORKDIR /usr/src/puppet
 

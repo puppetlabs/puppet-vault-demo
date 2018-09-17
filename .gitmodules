@@ -1,6 +1,7 @@
 [submodule "puppet"]
 	path = puppet
-	url = https://github.com/puppetlabs/puppet
+	url = https://github.com/puppet/puppet
+	branch = 6.0.x
 [submodule "facter"]
 	path = facter
 	url = https://github.com/puppetlabs/facter
@@ -10,3 +11,8 @@
 [submodule "src"]
 	path = puppetserver
 	url = https://github.com/pcarlisle/puppetserver
+	branch = docker-from-source
+[submodule "vault_module"]
+	path = code/environments/production/modules/vault_lookup
+	url = https://github.com/tvpartytonight/vault_lookup
+	branch = master
